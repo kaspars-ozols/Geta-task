@@ -1,0 +1,105 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(to right, #cccab4, #598ab4)
+}
+.button-wrapper{
+    display: block;
+    text-align: center;
+}
+.button{
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: coral;
+    font-size: 30px;
+    font-weight: 700;
+    box-shadow: 3px 3px 5px  rgb(0, 0, 0);
+    transition: all 0.2s;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.button:hover{
+    opacity: 0.8;
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+.button.pressed{
+    transform: translate(3px, 3px);
+    box-shadow: none;
+    background-color: rgb(119, 119, 119);
+    cursor: not-allowed;
+    opacity: 1;
+
+}
+.characters{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    justify-content: center;
+}
+
+.character{
+    flex-basis: 100%;
+    max-width: 20%;
+    padding: 20px;
+    background-color: rgb(206, 167, 105);
+    box-shadow: 3px 3px 5px  rgb(0, 0, 0);
+    margin: 20px 10px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+.character:hover{
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+.character__image-wrapper{
+    position: relative;
+    padding-top: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.character__image{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    object-fit: cover;
+}
+.character__name{
+    font-size: 24px;
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.character__status{
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0
+}
+
+
+@media only screen and (max-width: 90rem) {
+    .character{
+        max-width: 25%;
+    }
+  }
+@media only screen and (max-width: 75rem) {
+    .character{
+        max-width: 33%;
+    }
+  }
+@media only screen and (max-width: 49rem) {
+    .character{
+        max-width: 50%;
+    }
+  }
+@media only screen and (max-width: 35rem) {
+    .character{
+        max-width: 80%;
+    }
+  }
