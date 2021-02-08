@@ -12,5 +12,5 @@ Here are some suggestions for adapting the design for smaller devices that I com
 
 <b>Geta Task 2</b>
 
-https://mikusmikus.github.io/Geta-task2/ </br>
+https://mikusmikus.github.io/Geta-task/ </br>
 Getting data from RickNMorty API and presents it on static HTML page.
