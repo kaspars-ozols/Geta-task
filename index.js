@@ -8,26 +8,33 @@ button.addEventListener("click", () => {
 });
 
 const getAPIdata = () => {
-  fetch("https://rickandmortyapi.com/api/character")
+  fetch("https://rickandmortyapi.com/api/episode")
     .then((response) => response.json())
     .then((data) => {
-      const html = data.results
-        .map(({ name, image, status }) => {
-          return `
-          <figure class='character'>
-            <div class='character__image-wrapper'>
-              <img class='character__image' src=${image} alt=${name}>
-            </div>
-            <figcaption class='character__name'>${name}</figcaption>
-            <h5 class='character__status'>Status: ${status}</h5>
-          </figure>
-        `;
-        })
-        .join("");
+      Promise.all(data.results
+        .map(({ name, episode, characters }) => {
+          return Promise.all(characters
+            .map(url => fetch(url))
+            .map(promise => promise.then(x => x.json())))
+            .then(data => {
+              var charHtml = data.map(x => `<img class="character__image" src='${x.image}' alt="${x.name}"/>`).join("");
 
-      characters.insertAdjacentHTML("afterbegin", html);
+              return `
+                <figure class='episode'>
+                  <span class='episode__name'>${episode} - ${name}</span>
+                  <div>
+                    ${charHtml}
+                  </div>
+                </figure>
+              `;
+            });
+        })
+      )
+      .then(htmls =>characters.insertAdjacentHTML("afterbegin", htmls.join()));
     })
     .catch((err) => {
       console.warn("bad API Call.", err);
     });
 };
+
+getAPIdata();
